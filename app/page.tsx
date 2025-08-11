@@ -14,17 +14,17 @@ export default async function Page() {
       <section id="about" className="relative py-24 md:py-24 overflow-hidden min-h-[70vh]">
         {/* Background ASCII */}
         <div id="hero" aria-hidden className="pointer-events-none absolute inset-0 z-0 opacity-20 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] flex items-center justify-center">
-          <Link href="/dna" className="pointer-events-auto inline-block -translate-x-[15%]" aria-label="View rotating DNA helix">
+          <Link href="/dna" className="pointer-events-auto inline-block -translate-x-[30%]" aria-label="View rotating DNA helix">
             <AsciiAnimator
               frames={frames}
-              fps={2}
+              fps={6}
               playbackMode="loop"
               className="select-none"
               fitToElementId="hero"
               fitPaddingPx={0}
               lineHeight={0.75}
-              minFontPx={8}
-              maxFontPx={28}
+              minFontPx={4}
+              maxFontPx={12}
               ariaLabel=""
             />
           </Link>
