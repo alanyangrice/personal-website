@@ -13,18 +13,27 @@ export default async function Page() {
       {/* Hero/About */}
       <section id="about" className="relative py-24 md:py-24 overflow-hidden min-h-[70vh]">
         {/* Background ASCII */}
-        <div id="hero" aria-hidden className="pointer-events-none absolute inset-0 z-0 opacity-20 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] flex items-center justify-center">
-          <Link href="/dna" className="pointer-events-auto inline-block -translate-x-[25%]" aria-label="View rotating DNA helix">
+        <div
+          id="hero"
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-0 opacity-30 md:opacity-20 [mask-image:linear-gradient(to_top,rgba(0,0,0,0.15)_0%,rgba(0,0,0,0.4)_45%,rgba(0,0,0,1)_100%)] md:[mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] flex items-start justify-start md:items-center md:justify-center"
+        >
+          <Link
+            href="/dna"
+            className="pointer-events-auto inline-block translate-x-0 md:-translate-x-[25%] ml-2 mt-1 md:ml-0 md:mt-0"
+            aria-label="View rotating DNA helix"
+          >
             <AsciiAnimator
               frames={frames}
               fps={6}
               playbackMode="loop"
               className="select-none"
               fitToElementId="hero"
-              fitPaddingPx={0}
+              fitPaddingPx={8}
               lineHeight={0.75}
               minFontPx={4}
               maxFontPx={20}
+              charAspectRatio={0.55}
               ariaLabel=""
             />
           </Link>

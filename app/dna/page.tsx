@@ -22,12 +22,18 @@ export default async function DnaPage() {
             link to gif
           </a>
         </p>
-        <div className="mt-8 flex justify-center">
+        <div id="dna-canvas" className="mt-8 flex justify-center min-h-[60vh]">
           <AsciiAnimator
             frames={frames}
             fps={6}
             playbackMode="loop"
             className="w-full overflow-auto"
+            fitToElementId="dna-canvas"
+            fitPaddingPx={12}
+            lineHeight={0.75}
+            minFontPx={4}
+            maxFontPx={18}
+            charAspectRatio={0.55}
             ariaLabel="Rotating DNA helix in ASCII"
           />
         </div>

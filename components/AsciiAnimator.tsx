@@ -15,6 +15,7 @@ type AsciiAnimatorProps = {
   lineHeight?: number;
   minFontPx?: number;
   maxFontPx?: number;
+  charAspectRatio?: number;
 };
 
 export default function AsciiAnimator({
@@ -30,6 +31,7 @@ export default function AsciiAnimator({
   lineHeight = 0.85,
   minFontPx = 6,
   maxFontPx = 28,
+  charAspectRatio = 0.6,
 }: AsciiAnimatorProps) {
   const safeFrames = useMemo(() => (Array.isArray(frames) && frames.length > 0 ? frames : [""]), [frames]);
   const [frameIndex, setFrameIndex] = useState(0);
@@ -46,6 +48,20 @@ export default function AsciiAnimator({
       lines.pop();
     }
     return Math.max(1, lines.length);
+  }, [safeFrames]);
+
+  // Derive max columns from the first frame for horizontal fit
+  const maxColumns = useMemo(() => {
+    const first = safeFrames[0] ?? "";
+    const lines = first.split(/\r?\n/);
+    if (lines.length > 1 && lines[lines.length - 1].trim() === "") {
+      lines.pop();
+    }
+    let maxLen = 1;
+    for (const line of lines) {
+      maxLen = Math.max(maxLen, line.length);
+    }
+    return maxLen;
   }, [safeFrames]);
 
   useEffect(() => {
@@ -65,9 +81,13 @@ export default function AsciiAnimator({
 
     const recompute = () => {
       const h = target?.clientHeight ?? window.innerHeight;
-      const available = Math.max(0, h - fitPaddingPx);
-      if (lineCount > 0) {
-        const size = available / (lineCount * lineHeight);
+      const w = target?.clientWidth ?? window.innerWidth;
+      const availableH = Math.max(0, h - fitPaddingPx);
+      const availableW = Math.max(0, w - fitPaddingPx);
+      if (lineCount > 0 && maxColumns > 0) {
+        const sizeByHeight = availableH / (lineCount * lineHeight);
+        const sizeByWidth = availableW / (maxColumns * charAspectRatio);
+        const size = Math.min(sizeByHeight, sizeByWidth);
         const clamped = Math.max(minFontPx, Math.min(maxFontPx, Math.floor(size)));
         setComputedFontPx(clamped);
       }
@@ -81,7 +101,7 @@ export default function AsciiAnimator({
       ro?.disconnect();
       window.removeEventListener("resize", recompute);
     };
-  }, [fitToElementId, fitPaddingPx, lineCount, lineHeight, minFontPx, maxFontPx]);
+  }, [fitToElementId, fitPaddingPx, lineCount, maxColumns, lineHeight, minFontPx, maxFontPx, charAspectRatio]);
 
   useEffect(() => {
     const frameIntervalMs = Math.max(16, Math.floor(1000 / fps));
