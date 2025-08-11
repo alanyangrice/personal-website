@@ -25,7 +25,7 @@ export default async function DnaPage() {
         <div className="mt-8 flex justify-center">
           <AsciiAnimator
             frames={frames}
-            fps={9}
+            fps={6}
             playbackMode="loop"
             className="w-full overflow-auto"
             ariaLabel="Rotating DNA helix in ASCII"
