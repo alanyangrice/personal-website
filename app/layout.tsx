@@ -9,6 +9,11 @@ export const metadata: Metadata = {
   title: "Alan Yang",
   description:
     "Minimal one-page portfolio for Alan Yang: experience, projects, and contact.",
+  icons: {
+    icon: "/ASCII_DNA_Helix.png",
+    apple: "/ASCII_DNA_Helix.png",
+    shortcut: "/ASCII_DNA_Helix.png",
+  },
   openGraph: {
     title: "Alan Yang",
     description:

@@ -2,13 +2,35 @@ import Section from "@/components/Section";
 import LinkBtn from "@/components/LinkBtn";
 import ProjectsList from "@/components/ProjectsList";
 import Image from "next/image";
+import AsciiAnimator from "@/components/AsciiAnimator";
+import { loadAsciiFrames } from "@/lib/ascii";
+import Link from "next/link";
 
-export default function Page() {
+export default async function Page() {
+  const frames = await loadAsciiFrames();
   return (
     <>
       {/* Hero/About */}
-      <section id="about" className="py-24 md:py-24">
-        <div className="max-w-[720px] mx-auto px-5 text-center">
+      <section id="about" className="relative py-24 md:py-24 overflow-hidden min-h-[70vh]">
+        {/* Background ASCII */}
+        <div id="hero" aria-hidden className="pointer-events-none absolute inset-0 z-0 opacity-20 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] flex items-center justify-center">
+          <Link href="/dna" className="pointer-events-auto inline-block -translate-x-[15%]" aria-label="View rotating DNA helix">
+            <AsciiAnimator
+              frames={frames}
+              fps={2}
+              playbackMode="loop"
+              className="select-none"
+              fitToElementId="hero"
+              fitPaddingPx={0}
+              lineHeight={0.75}
+              minFontPx={8}
+              maxFontPx={28}
+              ariaLabel=""
+            />
+          </Link>
+        </div>
+
+        <div className="relative z-10 max-w-[720px] mx-auto px-5 text-center">
           <h1 className="text-5xl md:text-6xl font-semibold tracking-tight">Alan Yang</h1>
           <Image
             src="/headshot.jpg"
@@ -128,7 +150,7 @@ export default function Page() {
               Scholar
             </a>
           </div>
-          <p className="mt-6 text-sm text-neutral-500">2025 © Alan Yang</p>
+          <p className="mt-6 text-sm text-neutral-500"> © 2025 Alan Yang</p>
         </div>
       </footer>
     </>
