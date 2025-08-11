@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+/* Global base styles */
+html, body {
+  background: #ffffff;
+  color: #111111;
+}
+
+/* Typography rhythm */
+h1, h2, h3, p { 
+  margin: 0; 
+}
+
+/* Heading font */
+h1, h2 {
+  font-family: var(--font-heading), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+/* Focus visibility for a11y */
+:focus-visible {
+  outline: 2px solid #6F2CFF;
+  outline-offset: 2px;
+}
+
+/* Link styles */
+a {
+  text-underline-offset: 2px;
+}
+a:hover, a:focus-visible {
+  color: #6F2CFF;
+}
