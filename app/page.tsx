@@ -11,7 +11,7 @@ export default async function Page() {
   return (
     <>
       {/* Hero/About */}
-      <section id="about" className="relative py-24 md:py-24 overflow-hidden min-h-[70vh]">
+      <section id="about" className="relative py-24 md:py-24 overflow-hidden min-h-[70vh] flex items-center">
         {/* Background ASCII */}
         <div
           id="hero"
@@ -50,7 +50,7 @@ export default async function Page() {
             width={192}
           />
           <p className="mt-6 text-base md:text-lg text-neutral-800">
-            Hi, I am Alan, a junior at Rice University studying CS & Statistics. I am intersted in robotics, software, and bioinformatics. Recently: shipping BreakIn and co-authoring a paper accepted to Nucleic Acids Research.
+            Hi, I&apos;m Alan, a junior at Rice University studying CS &amp; Statistics. I&apos;m intersted in robotics, software, and bioinformatics. Recently: shipping BreakIn and co-authoring a paper accepted to Nucleic Acids Research.
           </p>
           <div className="mt-8 flex flex-wrap gap-4 justify-center">
             <LinkBtn href="/AlanYang_Resume_S25.pdf">Resume</LinkBtn>
