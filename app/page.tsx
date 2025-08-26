@@ -88,7 +88,7 @@ export default async function Page() {
               <span className="text-sm text-neutral-500 whitespace-nowrap">May 2024 - May 2025</span>
             </div>
             <p className="text-neutral-700 mt-2">
-              Developed AI pipelines to process 1,700+ research papers and engineered genomic workflows for 2+ TB of WGBS and Illumina array datasets; co-authored a paper accepted to Nucleic Acids Research and presented abstract at DOHaD 2025.
+              Developed AI pipelines to process 1,700+ research papers and engineered genomic workflows for 2+ TB of WGBS and Illumina array datasets; co-authored a paper accepted to Nucleic Acids Research and abstract accepted to DOHaD 2025.
             </p>
           </div>
           <div>
